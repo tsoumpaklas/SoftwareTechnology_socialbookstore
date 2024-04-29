@@ -3,11 +3,12 @@ package socialbookstore.domainmodel;
 import java.util.List;
 
 import jakarta.persistence.*;
+import socialbookstore.mappers.BookCategoryMapper;
 
 @Entity
 @Table(name = "bookcategories")
 
-public class BookCategory {
+public class BookCategory implements BookCategoryMapper{
     @ManyToMany
     @JoinTable(
         name = "user_profile_book_category",
@@ -23,7 +24,7 @@ public class BookCategory {
     @Column
     private String name;
 
-    @Column
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "bookCategory")
     private List <Book> books;
 
     public BookCategory(int categoryId, String name){
@@ -49,6 +50,12 @@ public class BookCategory {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    @Override
+    public List<BookCategory> findByName(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
     }
     
 }

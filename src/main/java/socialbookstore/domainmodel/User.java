@@ -13,7 +13,7 @@ import jakarta.persistence.*;
 @Table(name = "users")
 
 public class User implements UserDetails {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
