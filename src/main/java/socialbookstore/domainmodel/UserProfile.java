@@ -1,5 +1,6 @@
 package socialbookstore.domainmodel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -28,7 +29,7 @@ public class UserProfile implements UserProfileMapper{
 	private List <BookAuthor> favouriteBookAuthors;
 
 	@ManyToMany(mappedBy = "favouriteBookCategories")
-	private List <BookCategory> favouriteBookCategories;
+	private List <BookCategory> favouriteBookCategories = new ArrayList<>();
 
 	private String username;
 	private String fullName;
@@ -46,8 +47,12 @@ public class UserProfile implements UserProfileMapper{
 
 	@OneToMany(mappedBy = "offeringUser")
 	private List <Book> bookOffers;
-
-
+	public UserProfile() {
+		favouriteBookAuthors = new ArrayList<>();
+		//favouriteBookCategories = new ArrayList<>();
+		requestedBooks = new ArrayList<>();
+		bookOffers = new ArrayList<>();
+	}
 
 
 	public List<Book> getRequestedBooks() {
@@ -105,6 +110,10 @@ public class UserProfile implements UserProfileMapper{
 	
 	public void setFavouriteBookAuthors(List<BookAuthor> favouriteBookAuthors) {
 		this.favouriteBookAuthors = favouriteBookAuthors;
+	}
+
+	public List<BookCategory> getFavouriteBookCategories() {
+		return favouriteBookCategories;
 	}
 
 	@Override

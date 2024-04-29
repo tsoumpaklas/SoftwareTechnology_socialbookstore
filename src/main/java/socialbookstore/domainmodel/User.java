@@ -34,12 +34,23 @@ public class User implements UserDetails {
         return Collections.singletonList(authority);
    }
    
-   public User(String username, String password, Role role) {
+    public void setUsername(String username) {
         this.username = username;
-        this.password = password;
-        this.role = role;
+    }
 
-   }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
+    public Role getRole() {
+        return role;
+    }
 
    @Override
     public boolean isAccountNonExpired() {
