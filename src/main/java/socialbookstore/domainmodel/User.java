@@ -19,7 +19,7 @@ public class User implements UserDetails {
     @Column(name = "user_id")
     private int user_id;
 
-    @Column(name = "user_name", unique = true)
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")
@@ -33,24 +33,7 @@ public class User implements UserDetails {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
    }
-   
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-    
-    public Role getRole() {
-        return role;
-    }
 
    @Override
     public boolean isAccountNonExpired() {
@@ -76,6 +59,24 @@ public class User implements UserDetails {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
 }
