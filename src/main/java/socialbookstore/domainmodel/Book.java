@@ -31,7 +31,7 @@ public class Book {
 
     public Book(){}
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "book_bookauthor",
             joinColumns = @JoinColumn(name = "book_id"),
